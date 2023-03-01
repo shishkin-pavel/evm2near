@@ -1,6 +1,7 @@
 use csv::Writer;
 use near_workspaces;
 use serde_json::json;
+use std::fs::File;
 
 const CALC_PATH: &str = "calc.wasm";
 const BENCH_PATH: &str = "bench.wasm";
@@ -11,8 +12,7 @@ const COLLATZ_PATH: &str = "Collatz.wasm";
 const TERA: u64 = 1000000000000 as u64;
 
 /// returns average (gas_burned, gas_used) at calc contract
-async fn bench_calc() -> anyhow::Result<(u64, u64)> {
-    let mut wtr = Writer::from_path("benchmark.csv")?;
+async fn bench_calc(wtr: &mut Writer<File>) -> anyhow::Result<(u64, u64)> {
     let worker = near_workspaces::sandbox().await?;
     let wasm = std::fs::read(CALC_PATH)?;
     let contract = worker.dev_deploy(&wasm).await?;
@@ -76,7 +76,7 @@ async fn main() -> anyhow::Result<()> {
         "Input",
     ])?;
 
-    let (calc_burned, calc_used) = bench_calc().await?;
+    let (calc_burned, calc_used) = bench_calc(&mut wtr).await?;
     wtr.write_record(&[
         "Calc".to_string(),
         calc_burned.to_string(),
