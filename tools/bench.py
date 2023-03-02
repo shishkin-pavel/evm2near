@@ -39,12 +39,13 @@ def clean():
 
 
 def run_bench():
-    os.system('cd tools/benchmark')
+    os.chdir('tools/benchmark')
     os.system('cargo run')
-    os.system('cd ../../')
+    os.chdir('../../')
 
 
 if __name__ == "__main__":
+    clean()
     compile_contracts()
     print("Contracts compiled")
     copy_contracts()
