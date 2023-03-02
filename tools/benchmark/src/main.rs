@@ -1,8 +1,7 @@
 use csv::Writer;
-use near_workspaces;
+use serde::{Deserialize};
 use serde_json::{json, Value};
 use std::fs::File;
-use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize)]
 struct Input {
@@ -10,15 +9,15 @@ struct Input {
     pub input: Value,
 }
 
-const TERA: u64 = 1000000000000 as u64;
+const TERA: u64 = 1000000000000_u64;
 
 async fn bench_contract(wtr: &mut Writer<File>, name: &str) -> anyhow::Result<()> {
     let worker = near_workspaces::sandbox().await?;
-    let wasm = std::fs::read(format!("{}.wasm", name).to_string())?;
+    let wasm = std::fs::read(format!("{}.wasm", name))?;
     let contract = worker.dev_deploy(&wasm).await?;
 
-    let inputs: Vec<Input> =  serde_json::from_str(
-        &std::fs::read_to_string(format!("inputs/{}.json", name.to_string()).to_string())
+    let inputs: Vec<Input> = serde_json::from_str(
+        &std::fs::read_to_string(format!("inputs/{}.json", name))
             .expect("Unable to read file"),
     )
     .expect("JSON does not have correct format.");
@@ -49,7 +48,7 @@ async fn main() -> anyhow::Result<()> {
     let contracts = vec!["calc"];
 
     let mut wtr = Writer::from_path("benchmark.csv")?;
-    wtr.write_record(&[
+    wtr.write_record([
         "Contract",
         "Method",
         "Gas burned",

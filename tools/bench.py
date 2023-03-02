@@ -3,16 +3,16 @@
 import os
 
 contracts = [
-    'calc',
-    'bench',
-    'Collatz',
-    'echo',
-    'const'
+    'calc'
+    # 'bench',
+    # 'Collatz',
+    # 'echo',
+    # 'const'
 ]
 
 
 def compile(name: str):
-    os.system(f'./evm2near test/{name}.sol -o {name}.wasm -b wasi')
+    os.system(f'./evm2near test/{name}.sol -o {name}.wasm -b near')
 
 
 def copy(name: str):
@@ -20,7 +20,7 @@ def copy(name: str):
 
 
 def remove(name: str):
-    os.system(f'rm tools/benchmark{name}.wasm')
+    os.system(f'rm tools/benchmark/{name}.wasm')
 
 
 def compile_contracts():
@@ -41,11 +41,17 @@ def clean():
 def run_bench():
     os.system('cd tools/benchmark')
     os.system('cargo run')
+    os.system('cd ../../')
 
 
 if __name__ == "__main__":
     compile_contracts()
+    print("Contracts compiled")
     copy_contracts()
-    run_bench()    
+    print("Benchmark started")
+    run_bench()
+    print("Benchmark ended, see results in tools/benchmark/benchmark.csv")
+    print("Clean started")
     clean()
+    print("Clean ended")
     
