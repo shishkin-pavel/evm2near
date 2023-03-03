@@ -52,7 +52,6 @@ if __name__ == "__main__":
     print("Benchmark started")
     run_bench()
     print("Benchmark ended, see results in tools/benchmark/benchmark.csv")
-    print("Clean started")
     clean()
-    print("Clean ended")
+
     
