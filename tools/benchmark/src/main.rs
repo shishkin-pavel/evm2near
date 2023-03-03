@@ -53,8 +53,8 @@ async fn main() -> anyhow::Result<()> {
         "Method",
         "Gas burned",
         "Gas used",
-        "Average Tgas burned",
-        "Average Tgas used",
+        "Tgas burned",
+        "Tgas used",
         "Input",
     ])?;
 
