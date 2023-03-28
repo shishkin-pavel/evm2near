@@ -1,0 +1,7 @@
+Commit,Contract,Method,Input,Tgas burned,Avg Tgas used,Variance,Min,Max
+af2ba49,bench,cpu_ram_soak_test,"{""loop_limit"":100}",2,106.8,0.17777777777777778,106,107
+af2ba49,bench,cpu_ram_soak_test,"{""loop_limit"":500}",2,126.2,0.6222222222222221,125,127
+af2ba49,bench,cpu_ram_soak_test,"{""loop_limit"":1000}",2,150.8,2.6222222222222222,148,153
+af2ba49,bench,cpu_ram_soak_test,"{""loop_limit"":1500}",2,175.3,5.566666666666666,171,179
+af2ba49,bench,cpu_ram_soak_test,"{""loop_limit"":2000}",2,199.6,9.600000000000001,194,204
+af2ba49,bench,cpu_ram_soak_test,"{""loop_limit"":3000}",2,248.9,22.099999999999998,240,256
