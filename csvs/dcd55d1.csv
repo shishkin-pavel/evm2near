@@ -1,7 +1,0 @@
-Commit,Contract,Method,Input,Tgas burned,Avg Tgas used,Variance,Min,Max
-dcd55d1,bench,cpu_ram_soak_test,"{""loop_limit"":100}",2,106.7,0.22105263157894725,106,107
-dcd55d1,bench,cpu_ram_soak_test,"{""loop_limit"":500}",2,126.3,3.694736842105263,123,130
-dcd55d1,bench,cpu_ram_soak_test,"{""loop_limit"":1000}",2,150.9,13.568421052631576,144,158
-dcd55d1,bench,cpu_ram_soak_test,"{""loop_limit"":1500}",2,175.45,30.049999999999997,165,186
-dcd55d1,bench,cpu_ram_soak_test,"{""loop_limit"":2000}",2,200.05,53.31315789473687,187,215
-dcd55d1,bench,cpu_ram_soak_test,"{""loop_limit"":3000}",2,249.15,118.66052631578948,229,271
